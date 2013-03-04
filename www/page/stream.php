@@ -100,6 +100,7 @@
       <div class="input-append">
         <input id="appendedInputButton" type="text" placeholder="email address" />
         <button class="btn" type="button">Invite!</button>
+		<div id="">http://simplewip.com/?join&org=abc&email=tarwin@gmail.com</div>
       </div>
 
       <ul class="team-list unstyled">

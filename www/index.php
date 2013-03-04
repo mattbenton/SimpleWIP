@@ -204,6 +204,19 @@
 				firstHit = false;
 			});
 			
+			<? if (isset($_GET['join']) && !empty($_GET['org']) && !empty($_GET['email'])){ ?>
+				var $modal = $('#signupModal');
+				$('#signupModal').modal('show');
+				
+				$('#emailInp').val('<?=$_GET['email']?>').prop('disabled', true);
+				
+				api.getOrg('<?=$_GET['org']?>', function(org){
+					if (org){
+						$('#orgInp').val(org.name).prop('disabled', true);
+					}
+				});
+			<? } ?>
+			
 			$('#signupModal input').on('keydown', function(e){
 				if (e.keyCode == 13){
 					$('#sign-up-now').trigger('click');
@@ -211,7 +224,11 @@
 			});
 			
 			$('#signupModal').on('shown', function() {
-				$("#emailInp").focus();
+				if (!$("#emailInp").prop('disabled')){
+					$("#emailInp").focus();
+				}else{
+					$("#passInp").focus();
+				}
 			})
 			
 			$('#sign-up-now').click(function(e){
