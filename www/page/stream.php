@@ -72,6 +72,7 @@
         </div>
         <h5>Jack Johnson</h5>
         <p>iPhone developer</p>
+		<div class="btn btn-small"><a id="profile-edit-btn" href="#profileModal" data-toggle="modal"><i class="icon-edit"></i> Edit</a></div>
       </div>
 
     </div>

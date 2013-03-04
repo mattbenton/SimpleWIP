@@ -47,7 +47,7 @@
 
 <script>
 	$().ready(function(){
-		
+	
 		$('#profileModal input').on('keydown', function(e){
 			if (e.keyCode == 13){
 				$('#profile-save').trigger('click');
