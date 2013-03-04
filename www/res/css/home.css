@@ -130,7 +130,7 @@
       position: static;
       max-width: 600px;
       padding: 0 20px;
-      margin-top: 200px;
+      margin-top: 160px;
     }
     .carousel-caption h1,
     .carousel-caption .lead {
@@ -138,6 +138,8 @@
       line-height: 1.25;
       color: #fff;
       text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      padding: 10px 0 16px 0;
+      line-height: 30px;
     }
     .carousel-caption .btn {
       margin-top: 10px;

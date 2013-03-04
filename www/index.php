@@ -36,7 +36,11 @@
           <div class="container">
             <div class="carousel-caption">
               <h1><span class="simple">Simple</span><span class="wip">WIP</span> for those with no time.</h1>
-              <p class="lead">Invite your workers to join SimpleWIP and you’re on your way to social business insights and less wasted time.</p>
+              <!-- <p class="lead">Invite your workers to join SimpleWIP and you’re on your way to social business insights and less wasted time.</p> -->
+              <p class="lead">
+              	Insightful work-in-progress (WIP) for your team without the hassle.<br />
+              	See what's going on and how you can help each other.
+              </p>
               <a class="btn btn-large btn-primary" href="#signupModal" id="signup" data-toggle="modal" style="margin-right: 7px">Sign up today</a>
 			  <a class="btn btn-large btn-success" href="#loginModal" id="login" data-toggle="modal">Log in</a>
             </div>
@@ -201,7 +205,7 @@
 					// user authenticated with Firebase
 					authEvents.trigger('login', user);
 					if (firstHit){
-						$('body').loaderlay({message: 'Loggin in ...'});
+						$('body').loaderlay({message: 'Logging in ...'});
 						window.location.href = './app.php?p=stream';
 					}
 				} else {
@@ -256,7 +260,7 @@
 					authClient.createUser(email, pass, function(err, user) {
 					  if (!err) {
 						Loaderlay.hideAll();
-						$('#signupModal').loaderlay({message: 'Loggin in ...'});
+						$('#signupModal').loaderlay({message: 'Logging in ...'});
 						
 						// log user in
 						authEvents.on('error', function(e, error){
