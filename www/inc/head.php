@@ -23,8 +23,6 @@
 	<link href="./res/bootstrap/css/font-awesome.css" rel="stylesheet">
 		
 	<link href="./res/css/base.css" rel="stylesheet">
-		
-	<script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
 
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,900,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900,400italic,900italic' rel='stylesheet' type='text/css'>
