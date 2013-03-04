@@ -32,7 +32,7 @@
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
-          <img src="./res/img/slide1.jpg" alt="">
+          <img src="./res/img/slide2.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1><span class="simple">Simple</span><span class="wip">WIP</span> for those with no time.</h1>
