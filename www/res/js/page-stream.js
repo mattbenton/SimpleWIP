@@ -51,7 +51,7 @@ $(function() {
     var tags = post.tags;
     var tagHtml = '';
     for ( var i = 0; i < tags.length; i++ ) {
-      tagHtml += '<a href="#' + tags[i] + '">#' + tags[i] + '</a> ';
+      tagHtml += '<span class="tag">#' + tags[i] + '</span>';
     }
     $post.find('.wip-tags').html(tagHtml);
 

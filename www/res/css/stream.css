@@ -86,13 +86,24 @@ body {
   min-height: 30px;
 }
 
-.wip-tags .label {
-  padding: 0 0 0 5px;
-  line-height: 21px;
+.wip-tags {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.wip-tags .tag {
+  /*padding: 0 0 0 5px;*/
+  line-height: 18px;
   display: block;
   float: left;
   font-weight: normal;
-  margin-right: 8px;
+  font-size: 11px;
+  padding: 0 3px;
+  background: #e0e2e4;
+  border-radius: 3px;
+  margin-left: 8px;
 }
 
 .wip-tags .label span {
@@ -109,6 +120,10 @@ body {
   opacity: 1;
 }
 
+.label {
+  font-weight: normal;
+}
+
 .wip-text .wip-avatar {
   left: 10px;
   top: 10px;
@@ -119,17 +134,36 @@ body {
   border-radius: 3px;
   -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
   padding: 8px 0 0 0;
-  padding: 14px 10px 10px 10px;
+  padding: 14px 10px 0 10px;
   margin: -5px 10px 0 60px;
 }
 
 .wip-comment {
   font-size: 13px;
-  min-height: 30px;
+  /*min-height: 30px;*/
   position: relative;
-  padding: 5px 10px 5px 35px;
+  /*padding: 5px 10px 5px 35px;*/
 }
 
+.wip-comment input {
+  width: 353px;
+  height: 16px;
+  font-size: 13px;
+  line-height: 16px;
+  opacity: .6;
+}
+
+.wip-comment input:focus {
+  opacity: 1;
+}
+
+.wip-comment .btn {
+  opacity: .6;
+}
+
+.wip-comment .btn:hover, .wip-comment input:focus+button {
+  opacity: 1;
+}
 
 /* sidebar */
 .sidebar {
@@ -139,6 +173,7 @@ body {
 .user-profile {
   padding-left: 90px;
   position: relative;
+  min-height: 100px;
 }
 
 .user-profile h5 {
@@ -151,5 +186,16 @@ body {
   top: 0;
 }
 
+/* team list */
 
+.team-list {
 
+}
+
+.team-list .wip-avatar {
+  margin: 0 3px 0 0;
+}
+
+.team-list li {
+  
+}

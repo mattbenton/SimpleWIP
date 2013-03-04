@@ -29,13 +29,18 @@
 
           </div>
           <div class="wip-buttons">
-            <button class="btn btn-success">I think I'm all set</button>
             <button class="btn btn-info">Sure, I could use some help</button>
+            <button class="btn btn-success">I think I'm all set</button>
           </div>
         </div>
       </li>
 
       <li id="post-template" class="wip" style="display: none">
+
+        <ul class="wip-tags unstyled">
+          <span class="tag">javascript</span>
+        </ul>
+
         <div class="wip-text">
           <div class="wip-avatar">
             <img src="http://placekitten.com/35/35" />
@@ -49,7 +54,13 @@
             <span class="label label-info">php<span class="wip-follow-tooltip">&#10003;</span></span>
             <span class="label label-info">backbone.js<span class="wip-follow-tooltip">&#10003;</span></span>
           </ul>
-            <button class="btn btn-mini" type="button">I can help</button>
+
+          <div class="wip-comment">
+            <div class="input-append">
+              <input id="appendedInputButton" type="text" placeholder="Type comment..." />
+              <button class="btn btn-small" type="button"><i class="icon-reply"></i> Comment!</button>
+            </div>
+          </div>
           <!-- <div class="wip-comment">
             <div class="wip-avatar">
               <img src="http://placekitten.com/25/25" />
@@ -72,8 +83,31 @@
         </div>
         <h5 class="user-name">Jack Johnson</h5>
         <p>iPhone developer</p>
-		<div class="btn btn-small"><a id="profile-edit-btn" href="#profileModal" data-toggle="modal"><i class="icon-edit"></i> Edit</a></div>
+		    <div class="btn btn-small"><a id="profile-edit-btn" href="#profileModal" data-toggle="modal"><i class="icon-edit"></i> Edit</a></div>
       </div>
+
+      <h5>Following:</h5>
+      <span class="label">backbone.js</span>
+      <span class="label">coffeescript</span>
+      <span class="label">donkies</span>
+
+      <h5>Team:</h5>
+
+      <div class="input-append">
+        <input id="appendedInputButton" type="text" placeholder="email address" />
+        <button class="btn" type="button">Invite!</button>
+      </div>
+
+      <ul class="team-list unstyled">
+        <li class="clearfix">
+          <div class="wip-avatar pull-left"><img src="http://placekitten.com/20/20" /></div>
+          <a href="">Matt Benton</a>
+        </li>
+        <li class="clearfix">
+          <div class="wip-avatar pull-left"><img src="http://placekitten.com/20/20" /></div>
+          <a href="">Matt Benton</a>
+        </li>
+      </ul>
 
     </div>
 
