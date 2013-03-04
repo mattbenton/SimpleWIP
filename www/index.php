@@ -1,5 +1,6 @@
 <? require_once('./inc/head.php'); ?>
-    <style>
+</head><body>
+<style>
 
     /* GLOBAL STYLES
     -------------------------------------------------- */
@@ -405,6 +406,21 @@
 			  <input type="password" id="againInp" placeholder="... we know this is annoying" data-validation-matches-match="passInp">
 			</div>
 		  </div>
+		  
+		  <div class="control-group">
+			<label class="control-label" for="nameInp">Name</label>
+			<div class="controls">
+			  <input type="password" id="nameInp" placeholder="... what you was born with" required>
+			</div>
+		  </div>
+		  
+		  <div class="control-group">
+			<label class="control-label" for="orgInp">Organisation</label>
+			<div class="controls">
+			  <input type="password" id="orgInp" placeholder="... the man!" required>
+			</div>
+		  </div>
+		  
 		</form>
 	  </div>
 	  <div class="modal-footer">
@@ -460,30 +476,37 @@
 			var authEvents = {};
 			$.addEventModel(authEvents);
 			
-			var authError, authLoggedIn;
+			var firstHit = true;
 			var authClient = new FirebaseAuthClient(fireb, function(err, user) {
 				authError = null;
 				authUser = null;
 				if (err) {
 					// an error occurred while attempting login
 					authEvents.trigger('error', err);
-					authError = err;
 				} else if (user) {
 					// user authenticated with Firebase
 					authEvents.trigger('login', user);
-					authUser = user;
+					if (firstHit){
+						$('body').loaderlay({message: 'Loggin in ...'});
+						window.location.href = './app.php?p=stream';
+					}
 				} else {
 					// no user logged in
 					authEvents.trigger('none');
 				}
+				firstHit = false;
 			});
 			
 			$('#sign-up-now').click(function(e){
 				e.preventDefault();
+				
 				var email = $('#emailInp').val();
 				var pass = $('#passInp').val();
 				var again = $('#againInp').val();
-				if (email && pass && again && pass == again){
+				var name = $('#nameInp').val();
+				var org = $('#orgInp').val();
+				
+				if (email && pass && again && pass == again && name && org){
 					$('#signupModal').loaderlay({message: 'Working ...'});
 					$('#signup-alert').hide();
 					
@@ -491,6 +514,16 @@
 					  if (!err) {
 						Loaderlay.hideAll();
 						$('#signupModal').loaderlay({message: 'Loggin in ...'});
+						
+						// creat user and
+						
+						// create org
+						
+						// link user to org
+						
+						// redirect to app
+						window.location.href = './app.php?p=stream';
+						
 					  }else{
 						Loaderlay.hideAll();
 						$('#signup-alert').show();
@@ -531,7 +564,9 @@
 					});
 					authEvents.on('login', function(e, user){
 						$('#loginModal').loaderlay({message: 'Logging in ...'});
-						//console.log('user', user);
+						
+						// redirect to app
+						window.location.href = './app.php?p=stream';
 					});
 				}
 			});
@@ -539,3 +574,5 @@
 	</script>
 
 <? require_once('./inc/foot.php'); ?>
+  </body>
+</html>
