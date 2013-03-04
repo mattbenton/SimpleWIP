@@ -211,6 +211,10 @@
 				}
 			});
 			
+			$('#signupModal').on('shown', function() {
+				$("#emailInp").focus();
+			})
+			
 			$('#sign-up-now').click(function(e){
 				e.preventDefault();
 				
@@ -275,6 +279,10 @@
 					$('#log-in-now').trigger('click');
 				}
 			});
+			
+			$('#loginModal').on('shown', function() {
+				$("#emailInpLogin").focus();
+			})
 			
 			$('#log-in-now').click(function(e){
 				e.preventDefault();
