@@ -195,7 +195,7 @@ $(function() {
     var defaults = {
       message: null,
       tags: [],
-      onComplete: null
+      help: false
     };
 
     if ( !apiUser ) {
@@ -213,7 +213,8 @@ $(function() {
       email:     apiUser.email,
       message:   o.message,
       tags:      o.tags,
-      timestamp: timestamp
+      timestamp: timestamp,
+      help:      o.help
     };
 
     // Save actual post

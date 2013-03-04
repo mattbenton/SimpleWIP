@@ -53,7 +53,7 @@ $(function() {
 
     post.tags = post.tags || [];
 
-    $post.toggleClass('wip-help', post.help);
+    $post.toggleClass('wip-help', post.help || false);
 
     // var tags = ['jQuery'];
     var tags = post.tags;
@@ -68,7 +68,6 @@ $(function() {
 
   $postTags.find('option').remove().trigger('liszt:updated');
   api.onTag(function(tag) {
-    console.log(tag);
     $postTags.append('<option value="' + tag.name + '">' + tag.name + '</option>').trigger('liszt:updated');
   });
 
