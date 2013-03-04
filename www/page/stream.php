@@ -70,7 +70,7 @@
         <div class="wip-avatar">
           <img src="http://placekitten.com/75/75" />
         </div>
-        <h5>Jack Johnson</h5>
+        <h5 class="user-name">Jack Johnson</h5>
         <p>iPhone developer</p>
 		<div class="btn btn-small"><a id="profile-edit-btn" href="#profileModal" data-toggle="modal"><i class="icon-edit"></i> Edit</a></div>
       </div>

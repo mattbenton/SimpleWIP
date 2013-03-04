@@ -205,3 +205,19 @@ $(function() {
   };
 
 }());
+
+function timeSince ( ts ) {
+  var now  = Date.now();
+  var dt   = (now - ts) / 1000;
+  var dayT = Math.floor(dt / 86400);
+
+  if ( dt < 60 )    return 'just now';
+  if ( dt < 120 )   return '1 minute ago';
+  if ( dt < 3600 )  return Math.floor(dt / 60) + ' minutes ago';
+  if ( dt < 7200 )  return '1 hour ago';
+  if ( dt < 86400 ) return Math.floor(dt / 3600) + ' hours ago';
+  
+  if ( dayT === 1 ) return 'Yesterday';
+  if ( dayT < 7 )   return dayT + ' days ago';
+  if ( dayT < 31 )  return Math.ceil(dayT/7) + ' weeks ago';
+}

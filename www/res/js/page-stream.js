@@ -33,6 +33,8 @@ $(function() {
     api.getUser(user.email, function(user) {
       apiUser = user;
       console.log('got api user: ', user);
+
+      $('.user-name').text(user.name);
     });
   });
 
@@ -40,6 +42,7 @@ $(function() {
     var $post = $postTemplate.clone().insertAfter($createPost);
     $post.find('.wip-name').text(post.user.name);
     $post.find('.wip-message').text(post.message);
+    $post.find('.wip-time').text(timeSince(post.timestamp));
 
     // var tags = ['jQuery'];
     var tags = post.tags;
