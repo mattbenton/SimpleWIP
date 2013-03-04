@@ -253,8 +253,10 @@ $(function() {
       }
 
       api.getUser(post.email, function(user) {
-        post.user = user;
-        callback(post);
+        if ( user ) {
+          post.user = user;
+          callback(post);
+        }
       });
     });
   };

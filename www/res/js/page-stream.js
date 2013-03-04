@@ -39,6 +39,7 @@ $(function() {
     apiUser = user;
     console.log('got profile', user);
     $('.user-name').text(user.name);
+    $('.user-title').text(user.title);
     $('.user-avatar').attr('src', '//gravatar.com/avatar/' + md5(user.email));
   };
 
@@ -75,6 +76,7 @@ $(function() {
   $('#profileModal').on('shown', function() {
     $('#nameInp').val(apiUser.name);
     $('#orgInp').val(apiUser.org);
+    $('#titleInp').val(apiUser.title);
     console.log('load profile for user ', apiUser.email);
   });
 
