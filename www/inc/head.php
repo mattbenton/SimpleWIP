@@ -14,8 +14,12 @@
 	<script src="./res/js/event.js"></script>
   <script src="./res/chosen/chosen.jquery.min.js"></script>
 
+  <!--
 	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
 	<script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-auth-client.js"></script>
+  -->
+  <script type='text/javascript' src="/res/js/firebase.js"></script>
+  <script type="text/javascript" src="/res/js/firebase-auth-client.js"></script>
   <script src="/res/js/api.js"></script>
 
     <!-- Le styles -->
