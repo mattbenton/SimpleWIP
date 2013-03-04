@@ -98,6 +98,45 @@ $(function() {
     });
   };
 
+  api.createComment = function ( data, callback ) {
+    if ( !hasRequired('createComment', data, 'postId, email, message') ) {
+      return;
+    }
+
+    var timestamp = Date.now();
+
+    data.timestamp = timestamp;
+
+    var commentRef = F.child('comments').push();
+    commentRef.setWithPriority(data, timestamp);
+    var commentId = commentRef.name();
+
+    var postRef = F.child('postComments/' + data.postId).push();
+    postRef.setWithPriority(commentId, timestamp);
+
+    if ( callback ) {
+      callback();
+    }
+  };
+
+  api.onPostComment = function ( postId, callback ) {
+    F.child('postComments/' + postId).on('child_added', function(item) {
+      F.child('comments/' + item.val()).once('value', function(commentItem) {
+        if ( callback ) {
+          var comment = commentItem.val();
+          comment.id = commentItem.name();
+
+          api.getUser(comment.email, function(user) {
+            if ( user ) {
+              comment.user = user;
+              callback(comment);
+            }
+          })
+        }
+      });
+    });
+  };
+
   api.getUser = function ( email, callback ) {
     // if ( userCache[email] ) {
     //   console.log('exit earky');
@@ -274,6 +313,8 @@ $(function() {
     F.child('posts').on('child_added', function(item) {
       var post = item.val();
       // callback(post);
+
+      post.id = item.name();
 
       // console.log(post.email);
 

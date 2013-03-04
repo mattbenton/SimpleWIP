@@ -76,7 +76,24 @@ $(function() {
 
     post.tags = post.tags || [];
 
+    $post.data('id', post.id);
+
     $post.toggleClass('wip-help', post.help || false);
+
+    api.onPostComment(post.id, function(comment) {
+      console.log('comment', comment);
+
+      var html = '<div class="wip-comment"><div class="wip-avatar">';
+      html += '<img width="25" height="25" src="' + '//gravatar.com/avatar/' + md5(comment.email) + '" />';
+      html += '</div><span class="wip-name">' + comment.user.name + '</span> ' + comment.message + '</div>';
+
+      $post.find('.wip-comment-list').append(html);
+      $post.find('.wip-comment-input').val('').blur();
+      // var wipComments = $(this).parents('.wip-comment').prev();
+      // wipComments.append(tmpl);
+      // $(this).val('').blur();
+      // return false;
+    });
 
     // var tags = ['jQuery'];
     var tags = post.tags;
@@ -101,16 +118,29 @@ $(function() {
     console.log('load profile for user ', apiUser.email);
   });
 
-  $('.wip-list').on('keydown', '.wip-comment-input', function(e){
-    if(e.keyCode == 13) {
-      var val = $(this).val();
-      var tmpl = '<div class="wip-comment"><div class="wip-avatar"><img width="25" height="25" src="' + '//gravatar.com/avatar/' + md5(apiUser.email) + '" /></div><span class="wip-name">' + apiUser.name + '</span> ' + val + '</div>';
-      var wipComments = $(this).parents('.wip-comment').prev();
-      wipComments.append(tmpl);
-      $(this).val('').blur();
-      return false;
+  var postComment = function ( $post ) {
+    var $input = $post.find('.wip-comment-input');
+
+    if ( !$input.val() ) return;
+
+    api.createComment({
+      postId: $post.data('id'),
+      email:  apiUser.email,
+      message: $input.val()
+    });
+
+    console.log('post comment', $input.val());
+  };
+
+  $postList.on('keydown', '.wip-comment-input', function(e){
+    if ( e.keyCode == 13 ) {
+      postComment($(this).closest('.wip'));
     }
-    // if(e.)
-  })
+  });
+
+  $postList.on('click', '.btn-submit-comment', function() {
+    postComment($(this).closest('.wip'));
+    return false;
+  });
 
 });

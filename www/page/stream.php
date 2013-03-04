@@ -60,7 +60,7 @@
           <div class="wip-comment">
             <div class="input-append">
               <input id="appendedInputButton" class="input-block-level wip-comment-input" type="text" placeholder="Type comment..." />
-              <button class="btn btn-small" type="button"><i class="icon-reply"></i> Comment!</button>
+              <button class="btn btn-small btn-submit-comment" type="button"><i class="icon-reply"></i> Comment!</button>
             </div>
           </div>
 
