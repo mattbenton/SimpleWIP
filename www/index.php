@@ -60,7 +60,7 @@
         <div class="span4">
           <i class="icon-lock" style="font-size: 96px; color: gold;"></i>
           <h2>Private</h2>
-          <p>Your WIPs are private, only viewable to your organisation or team.</p>
+          <p>Your WIPs are private, only viewable to your organization or team.</p>
         </div><!-- /.span4 -->
         <div class="span4">
           <i class="icon-leaf" style="font-size: 96px; color: darkgreen;"></i>
@@ -132,7 +132,7 @@
 		  </div>
 		  
 		  <div class="control-group">
-			<label class="control-label" for="orgInp">Organisation</label>
+			<label class="control-label" for="orgInp">Organization</label>
 			<div class="controls">
 			  <input type="text" id="orgInp" placeholder="... the man!" required>
 			</div>

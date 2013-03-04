@@ -28,7 +28,7 @@
 		  <!-- <hr />
 
 		  <div class="control-group">
-				<label class="control-label" for="orgInp">Organisation</label>
+				<label class="control-label" for="orgInp">Organization</label>
 				<div class="controls">
 				  <input type="text" id="orgInp" placeholder="... your identity" required>
 				</div>

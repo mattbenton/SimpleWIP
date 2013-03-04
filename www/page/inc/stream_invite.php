@@ -7,7 +7,7 @@
 
   <div class="modal-body">
 	
-	<p>Please send the below link to your co-worker (<span id="invite-link-email"></span>) to get them to join your organisation.</p>
+	<p>Please send the below link to your co-worker (<span id="invite-link-email"></span>) to get them to join your organization.</p>
 	<div class="alert alert-info" id="invite-link">
 	</div>
 		
