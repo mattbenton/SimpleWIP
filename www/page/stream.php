@@ -93,11 +93,48 @@
 
       <h5>Organization:</h5>
 
-      <div class="input-append org-invite">
-        <input id="appendedInputButton" class="input-block-level" type="text" placeholder="email address" />
-        <button class="btn" type="button">Invite!</button>
-		<div id="">http://simplewip.com/?join&org=abc&email=tarwin@gmail.com</div>
+      <div class="input-append">
+        <input class="appendedInputButton" id="invite-email" type="email" placeholder="email address" required />
+        <button class="btn" type="button" id="invite-btn">Invite!</button>
       </div>
+	  <div id="invite-link-info" class="alert alert-success" style="display: none;">Please email this link.</div>
+	  <div id="invite-link-error" class="alert alert-warning" style="display: none;">Sorry, this user is already in the system.</div>
+	  <div id="invite-link" style="display: none;"></div>
+
+	  <script>
+		$(function(){
+			$('#invite-email').on('keydown', function(e){
+				if (e.keyCode == 13){
+					$('#invite-btn').trigger('click');
+				}
+			});
+			$('#invite-btn').click(function(e){
+			
+				$('#invite-link').hide();
+				$('#invite-link-info').hide();
+				$('#invite-link-error').hide();
+				
+				var $e = $('#invite-email');
+				var email = $e.val();
+				if (email){
+					if (email == apiUser.email){
+						$('#invite-link-error').show();
+					}
+					api.getUser(email, function(user){
+						if (!user){
+							$e.val('');
+							var $in = $('#invite-link');
+							$in.html('http://simplewip.com/?join&org=' + apiUser.orgId + '&email=' + encodeURIComponent(email));
+							$in.show();
+							$('#invite-link-info').show();
+						}else{
+							$('#invite-link-error').show();
+						}
+					});
+				};
+			});
+		});
+	  </script>
 
       <ul class="team-list unstyled">
         <li class="clearfix">
