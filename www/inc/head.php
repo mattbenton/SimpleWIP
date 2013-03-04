@@ -7,12 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<script src="./res/js/jquery.js"></script>
+	<script src="./res/js/jquery-1.8.3.min.js"></script>
 	<script src="./res/js/jqBootstrapValidation.js"></script>
 	<script src="./res/bootstrap/js/bootstrap.js"></script>
 	<script src="./res/js/loaderlay.js"></script>
 	<script src="./res/js/event.js"></script>
-  <script src="./res/chosen/chosen.jquery.min.js"></script>
+  <script src="./res/chosen/chosen.jquery.js"></script>
 
   <!--
 	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
@@ -56,7 +56,12 @@
 		var authEvents = {};
 		$().ready(function(){
 			$.addEventModel(authEvents);
-      $(".chzn-select").chosen()
+      $(".chzn-select").chosen({
+        create_option: true,
+        create_option_text: 'Create tag',
+        persistent_create_option: true,
+        limit: 2
+      })
       $(".wip-follow-tooltip").tooltip({
         title: 'Follow tag'
       })

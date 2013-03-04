@@ -13,7 +13,7 @@
 
       <ul class="unstyled">
         <li class="active"><a href="#">Organization</a></li>
-        <li><a href="#">Team</a></li>
+        <!--<li><a href="#">Team</a></li>-->
         <li><a href="#">World</a></li>
       </ul>
 

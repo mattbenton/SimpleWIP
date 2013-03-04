@@ -9,6 +9,7 @@
 
 <div class="row-fluid">
   <div class="span8">
+
     <ul class="wip-list unstyled">
 
       <li id="create-post" class="wip post">
@@ -29,7 +30,7 @@
 
           </div>
           <div class="wip-buttons">
-            <button class="btn btn-info">Sure, I could use some help</button>
+            <button class="btn btn-danger">Sure, I could use some help</button>
             <button class="btn btn-success">I think I'm all set</button>
           </div>
         </div>
@@ -46,7 +47,7 @@
             <img src="http://placekitten.com/35/35" />
           </div>
           <span class="wip-name">Jeremy W. </span>
-          <div class="wip-message">Trying to get our backend CRM to connect and load info about our eComm users.</div>
+          <span class="wip-message">Trying to get our backend CRM to connect and load info about our eComm users.</span>
         </div>
         <div class="wip-meta">
           <ul class="wip-tags unstyled">
@@ -55,21 +56,26 @@
             <span class="label label-info">backbone.js<span class="wip-follow-tooltip">&#10003;</span></span>
           </ul>
 
+<!--          <div class="wip-comment-list">
+            <a href="#" class="wip-comment">&ndash; 3 comments &ndash;</a>
+            <div class="wip-comment">
+              <div class="wip-avatar">
+                <img src="http://placekitten.com/25/25" />
+              </div>
+              <span class="wip-name">Andy J.</span> Ping me if you need api documentation it’s kind of a mess right now
+            </div>
+          </div>-->
           <div class="wip-comment">
             <div class="input-append">
               <input id="appendedInputButton" type="text" placeholder="Type comment..." />
               <button class="btn btn-small" type="button"><i class="icon-reply"></i> Comment!</button>
             </div>
           </div>
-          <!-- <div class="wip-comment">
-            <div class="wip-avatar">
-              <img src="http://placekitten.com/25/25" />
-            </div>
-            <span class="wip-name">Andy J.</span> Ping me if you need api documentation it’s kind of a mess right now
-          </div> -->
         </div>
         <div class="wip-time">2 hours ago</div>
       </li>
+
+      <h3 class="wip-date-div">Yesterday</h3>
 
     </ul>
   </div>
@@ -91,7 +97,9 @@
       <span class="label">coffeescript</span>
       <span class="label">donkies</span>
 
-      <h5>Team:</h5>
+      <br /><br />
+
+      <h5>Organization:</h5>
 
       <div class="input-append">
         <input id="appendedInputButton" type="text" placeholder="email address" />
@@ -105,7 +113,11 @@
         </li>
         <li class="clearfix">
           <div class="wip-avatar pull-left"><img src="http://placekitten.com/20/20" /></div>
-          <a href="">Matt Benton</a>
+          <a href="">Tarwin</a>
+        </li>
+        <li class="clearfix">
+          <div class="wip-avatar pull-left"><img src="http://placekitten.com/20/20" /></div>
+          <a href="">Bob</a>
         </li>
       </ul>
 

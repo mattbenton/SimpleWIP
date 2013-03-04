@@ -4,6 +4,11 @@ body {
   background: #e0e1e5;
 }
 
+.wip-date-div {
+  position: relative;
+  background: #e7e9eb;
+}
+
 .wip-list {
   width: 550px;
   position: relative;
@@ -25,7 +30,7 @@ body {
 .wip {
   /*min-height: 100px;*/
   color: #5a5b5e;
-  margin: 30px 0 30px 0;
+  margin: 40px 0 45px 0;
   position: relative;
 
 }
@@ -50,9 +55,10 @@ body {
   top: 10px;
   left: -50px;
   width: 40px;
-  line-height: 15px;
+  line-height: 12px;
   text-align: right;
   color: #909196;
+  opacity: .6;
 }
 
 .wip-avatar {
@@ -83,7 +89,7 @@ body {
   /*z-index: 2;*/
   padding: 10px;
   padding-left: 60px;
-  min-height: 30px;
+  min-height: 40px;
 }
 
 .wip-tags {
@@ -136,6 +142,11 @@ body {
   padding: 8px 0 0 0;
   padding: 14px 10px 0 10px;
   margin: -5px 10px 0 60px;
+}
+
+.wip-comment-list {
+  /*text-align: center;*/
+  /*padding: 0 0 10px 0;*/
 }
 
 .wip-comment {
@@ -193,9 +204,10 @@ body {
 }
 
 .team-list .wip-avatar {
-  margin: 0 3px 0 0;
+  margin: 0 5px 0 0;
 }
 
 .team-list li {
-  
+  line-height: 23px;
+  margin: 8px 0;
 }
