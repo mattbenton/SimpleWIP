@@ -267,7 +267,7 @@
             </button>
             <a class="brand" href="#">Simple<span>WIP</span></a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse">
+            <!--<div class="nav-collapse collapse">
               <ul class="nav">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown">User <b class="caret"></b></a>
@@ -278,7 +278,9 @@
                   </ul>
                 </li>
               </ul>
-            </div><!--/.nav-collapse -->
+            </div>
+			-->
+			<!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
 
@@ -473,11 +475,8 @@
 			var fireb = new Firebase('https://simplewip.firebaseio.com/');
 			//fireb.set('test', {'hello': 'world', 'and': 123});
 			
-			var authEvents = {};
-			$.addEventModel(authEvents);
-			
 			var firstHit = true;
-			var authClient = new FirebaseAuthClient(fireb, function(err, user) {
+			authClient = new FirebaseAuthClient(fireb, function(err, user) {
 				authError = null;
 				authUser = null;
 				if (err) {
@@ -496,6 +495,8 @@
 				}
 				firstHit = false;
 			});
+			
+			
 			
 			$('#sign-up-now').click(function(e){
 				e.preventDefault();
@@ -534,6 +535,12 @@
 						}
 					  }
 					});
+				}
+			});
+			
+			$('#loginModal input').on('keydown', function(e){
+				if (e.keyCode == 13){
+					$('#log-in-now').trigger('click');
 				}
 			});
 			

@@ -4,3 +4,38 @@
 	}
 ?>
 </head><body>
+
+<a id="logout">Logout</a>
+<script>
+	$().ready(function(){
+	
+		var fireb = new Firebase('https://simplewip.firebaseio.com/')
+
+		var firstHit = true;
+		authClient = new FirebaseAuthClient(fireb, function(err, user) {
+			if (err) {
+				// an error occurred while attempting login
+				authEvents.trigger('error', err);
+			} else if (user) {
+				// user authenticated with Firebase
+				authEvents.trigger('login', user);
+			} else {
+				// no user logged in
+				authEvents.trigger('none');
+				if (firstHit){
+					$('body').loaderlay({message: 'Loggin out ...'});
+					window.location.href = './';
+				}
+			}
+			firstHit = false;
+		});
+	
+		$('#logout').click(function(){
+			$('body').loaderlay({message: 'Logging out ...'});
+			authEvents.on('none', function(e){
+				window.location.href = './';
+			});
+			authClient.logout();
+		});
+	});
+</script>
