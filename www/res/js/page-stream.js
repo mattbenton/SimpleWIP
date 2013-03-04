@@ -22,10 +22,13 @@ $(function() {
       tags.push($(this).val());
     });
 
-    api.createPost(apiUser, {
+    var post = {
       message: postText,
-      tags:    tags
-    });
+      tags:    tags,
+      help:    $button.hasClass('btn-danger')
+    };
+
+    api.createPost(apiUser, post);
   });
 
   var onUpdateProfile = function ( user ) {
@@ -49,6 +52,8 @@ $(function() {
     $post.find('.wip-time').text(timeSince(post.timestamp));
 
     post.tags = post.tags || [];
+
+    $post.toggleClass('wip-help', post.help);
 
     // var tags = ['jQuery'];
     var tags = post.tags;
