@@ -38,6 +38,8 @@
 
       <li id="post-template" class="wip" style="display: none">
 
+        <div class="wip-ribbon"></div>
+
         <ul class="wip-tags unstyled">
           <span class="tag">javascript</span>
         </ul>
@@ -50,12 +52,6 @@
           <span class="wip-message">Trying to get our backend CRM to connect and load info about our eComm users.</span>
         </div>
         <div class="wip-meta">
-          <ul class="wip-tags unstyled">
-            <span class="label label-info">javascript<span class="wip-follow-tooltip">&#10003;</span></span>
-            <span class="label label-info">php<span class="wip-follow-tooltip">&#10003;</span></span>
-            <span class="label label-info">backbone.js<span class="wip-follow-tooltip">&#10003;</span></span>
-          </ul>
-
 <!--          <div class="wip-comment-list">
             <a href="#" class="wip-comment">&ndash; 3 comments &ndash;</a>
             <div class="wip-comment">

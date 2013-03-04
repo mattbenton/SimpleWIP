@@ -92,6 +92,10 @@ body {
   min-height: 40px;
 }
 
+.wip-help .wip-tags {
+  right: 40px;
+}
+
 .wip-tags {
   position: absolute;
   top: 10px;
@@ -198,6 +202,21 @@ body {
 }
 
 /* team list */
+
+.wip-ribbon {
+  display: none;
+  width: 27px;
+  height: 58px;
+  background: url(../img/ribbon.png);
+  z-index: 3;
+  position: absolute;
+  top: -6px;
+  right: 5px;
+}
+
+.wip-help .wip-ribbon {
+  display: block;
+}
 
 .team-list {
 
