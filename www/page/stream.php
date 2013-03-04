@@ -16,10 +16,10 @@
           <div class="wip-avatar">
             <img src="http://placekitten.com/35/35" />
           </div>
-          <textarea class="input-block-level" placeholder="What are you working on today?"></textarea>
+          <textarea id="post-text" class="input-block-level" placeholder="What are you working on today?"></textarea>
           <div>
 
-            <select data-placeholder="Tags" class="chzn-select input-block-level" multiple>
+            <select id="post-tags" data-placeholder="Tags" class="chzn-select input-block-level" multiple>
               <option value=""></option> 
               <option value="php">php</option> 
               <option value="javascript">javascript</option> 
@@ -35,17 +35,17 @@
         </div>
       </li>
 
-      <li class="wip">
+      <li id="post-template" class="wip" style="display: none">
         <div class="wip-text">
           <div class="wip-avatar">
             <img src="http://placekitten.com/35/35" />
           </div>
           <span class="wip-name">Jeremy W. </span>
-          Trying to get our backend CRM to connect and load info about our eComm users.
+          <div class="wip-message">Trying to get our backend CRM to connect and load info about our eComm users.</div>
         </div>
         <div class="wip-meta">
-          tags here...
-            <button class="btn btn-mini" type="button">I can help</button>
+          <span class="wip-tags"></span>
+          <button class="btn btn-mini" type="button">I can help</button>
           <!-- <div class="wip-comment">
             <div class="wip-avatar">
               <img src="http://placekitten.com/25/25" />
@@ -63,3 +63,4 @@
   </div>
 </div>
 
+<script src="/res/js/page-stream.js"></script>

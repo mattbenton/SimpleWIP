@@ -246,21 +246,13 @@
 						});
 						authEvents.on('login', function(e, user){
 							// creat user and
-              console.log('create user with email: ', email);
-              api.setUser(email, {
-                name: name,
-                email: email
-              }, function() {
-                console.log('created user!');
+              api.signUp({
+                userName:  name,
+                userEmail: email,
+                orgName:   org
+              }, function() { 
                 window.location.href = './app.php?p=stream';
               });
-
-							// create org
-							
-							// link user to org
-
-							// redirect to app
-							// window.location.href = './app.php?p=stream';
 						});
 						
 						authClient.login('password', {
@@ -281,7 +273,7 @@
 					});
 				}
 			});
-			
+
 			$('#loginModal input').on('keydown', function(e){
 				if (e.keyCode == 13){
 					$('#log-in-now').trigger('click');

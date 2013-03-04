@@ -43,6 +43,43 @@ $(function() {
     return true;
   };
 
+  var userCache = {};
+
+  api.signUp = function ( options, callback ) {
+    if ( !hasRequired('signUp', options, 'userName, userEmail, orgName') ) {
+      return;
+    }
+
+    if ( !callback ) {
+      return error('signUp', 'missing callback');
+    }
+
+    var savedUser = false;
+    var savedOrg  = false;
+
+    var onSave = function () {
+      if ( savedUser && savedOrg ) {
+        callback();
+      }
+    };
+
+    api.setUser(options.userEmail, {
+      name:  options.userName,
+      email: options.userEmail,
+      org:   options.orgName
+    }, function() {
+      savedUser = true;
+      onSave();
+    });
+
+    api.setTeam(options.orgName, {
+      name: options.orgName
+    }, function() {
+      savedOrg = true;
+      onSave();
+    });
+  };
+
   api.setUser = function ( email, data, callback ) {
     var ref = F.child('user/' + encodeKey(email));
     ref.update(data, function() {
@@ -52,15 +89,21 @@ $(function() {
     });
   };
 
-  api.getUser = function ( email, callback, timeout ) {
+  api.getUser = function ( email, callback ) {
     F.child('user/' + encodeKey(email)).once('value', function(item) {
-      callback(item.val());
+      var user = item.val();
+      userCache[email] = user;
+      callback(user);
     });
   };
 
-  api.createTeam = function ( name, data ) {
+  api.setTeam = function ( name, data, callback ) {
     var ref = F.child('team/' + encodeKey(name));
-    ref.set(data);
+    ref.update(data, function() {
+      if ( callback ) {
+        callback();
+      }
+    });
   };
 
   api.getTeam = function ( name, callback ) {
@@ -74,55 +117,64 @@ $(function() {
     ref.set(true);
   };
 
-  api.createPost = function ( options ) {
+  api.createPost = function ( apiUser, options ) {
     var defaults = {
       message: null,
-      email: null,
-      tags: []
+      tags: [],
+      onComplete: null
     };
 
+    if ( !apiUser ) {
+      return error('createPost', 'missing apiUser');
+    }
+
     var o = $.extend(defaults, options);
-    if ( !hasRequired('createPost', o, 'email,message') ) {
+    if ( !hasRequired('createPost', o, 'tags, message') ) {
       return;
     }
 
-    var post = {
-      email:   o.email,
-      message: o.message
-    };
-
     var timestamp = Date.now();
+
+    var post = {
+      email:     apiUser.email,
+      message:   o.message,
+      tags:      o.tags,
+      timestamp: timestamp
+    };
 
     // Save actual post
     var postRef = F.child('posts').push();
     var postId  = postRef.name();
     postRef.setWithPriority(post, timestamp);
 
-    // Save reference to post on user
+    // Save user post reference;
+    var userPostRef = F.child('userPosts/' + encodeKey(apiUser.email)).push();
+    userPostRef.setWithPriority(postId, timestamp);
 
-
-    // var posts = F.child('post');
-    // var postRef = posts.push();
-    // postRef.setWithPriority(post, timestamp);
-    // var postId = postRef.name();
-    // console.log('created post: ', postId);
-
-    var postsUri = 'user/' + encodeKey(o.email) + '/posts';
-
-    var userPosts   = F.child(postsUri);
-    var userPostRef = userPosts.push();
-    var postUri     = postsUri + '/' + userPostRef.name();
-    userPostRef.setWithPriority(post, timestamp);
-
+    // Save tags
     for ( var i = 0; i < o.tags.length; i++ ) {
       var tag = o.tags[i];
       var tagListRef = F.child('tags/' + encodeKey(tag)).push();
 
-      tagListRef.setWithPriority({
-        id:  userPostRef.name(),
-        uri: postsUri
-      }, timestamp);
+      tagListRef.setWithPriority(postId, timestamp);
     }
+  };
+
+  api.onPost = function ( callback ) {
+    F.child('posts').on('child_added', function(item) {
+      var post = item.val();
+
+      var user = userCache[post.email];
+      if ( user ) {
+        post.user = user;
+        return callback(post);
+      }
+
+      api.getUser(post.email, function(user) {
+        post.user = user;
+        callback(post);
+      });
+    });
   };
 
   api.getPostsByUser = function ( email, callback ) {
