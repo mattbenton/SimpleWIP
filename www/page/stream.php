@@ -80,4 +80,4 @@
 </div>
 
 <script src="/res/js/page-stream.js"></script>
-<? require_once('./pages/inc/stream_profile.php'); ?>
+<? require_once('./page/inc/stream_profile.php'); ?>
