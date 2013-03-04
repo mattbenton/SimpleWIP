@@ -34,6 +34,7 @@ $(function() {
 
   api.onUpdateProfile('m@b.com', function(user) {
     apiUser = user;
+    console.log('got profile', user);
     $('.user-name').text(user.name);
   });
 

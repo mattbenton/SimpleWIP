@@ -90,10 +90,80 @@ $(function() {
   };
 
   api.getUser = function ( email, callback ) {
+    if ( userCache[email] ) {
+      return userCache[email];
+    }
+
     F.child('user/' + encodeKey(email)).once('value', function(item) {
       var user = item.val();
       userCache[email] = user;
       callback(user);
+    });
+  };
+
+  api.createOrg = function ( data, callback ) {
+    if ( !hasRequired('createOrganisation', data, 'name') ) {
+      return;
+    }
+
+    var orgRef = F.child('orgs').push();
+    var orgId  = orgRef.name();
+
+    orgRef.setWithPriority(data, Date.now(), function() {
+      if ( callback ) {
+        data.id = orgId;
+        callback(data);
+      }
+    });
+  };
+
+  api.updateOrg = function ( data, callback ) {
+    if ( !hasRequired('updateOrg', data, 'id') ) {
+      return;
+    }
+
+    var id = data.id;
+    delete data.id;
+
+    F.child('orgs/' + id).update(data, callback);
+  };
+
+  api.onTag = function ( callback ) {
+    F.child('tags').on('child_added', function(item) {
+      callback(item.val());
+    });
+  };
+
+  api.onTag(function(tag) {
+    console.log('tag', tag);
+  });
+
+  api.addUserToOrg = function ( options, callback ) {
+    if ( !hasRequired('addUserToOrg', options, 'email, orgId') ) {
+      return;
+    }
+
+    var completeCount = 0;
+    var onComplete = function() {
+      if ( completeCount === 2 ) {
+        callback();
+      }
+    };
+
+    var ref = F.child('orgUsers/' + encodeKey(options.orgId) + '/' + encodeKey(options.email));
+    ref.set(true, callback);
+
+    // api.setUser({
+    //   orgId: options.orgId
+    // }, function)
+  };
+
+  api.onOrgUsers = function ( orgId, callback ) {
+    F.child('orgUsers/' + orgId).on('child_added', function(item) {
+      api.getUser(item.val().email, function(user) {
+        user.orgId = orgId;
+        callback(user);
+      });
     });
   };
 
@@ -162,9 +232,10 @@ $(function() {
     // Save tags
     for ( var i = 0; i < o.tags.length; i++ ) {
       var tag = o.tags[i];
-      var tagListRef = F.child('tags/' + encodeKey(tag)).push();
-
+      var tagListRef = F.child('tagPosts/' + encodeKey(tag)).push();
       tagListRef.setWithPriority(postId, timestamp);
+
+      F.child('tags/' + encodeKey(tag)).set({ name: tag });
     }
   };
 
