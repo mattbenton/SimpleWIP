@@ -117,6 +117,14 @@ $(function() {
     ref.set(true);
   };
 
+  api.onUpdateProfile = function ( email, callback ) {
+    F.child('user/' + encodeKey(email)).on('value', function(item) {
+      if ( callback ) {
+        callback(item.val());
+      }
+    });
+  };
+
   api.createPost = function ( apiUser, options ) {
     var defaults = {
       message: null,

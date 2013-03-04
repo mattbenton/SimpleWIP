@@ -1,3 +1,5 @@
+var apiUser = null;
+
 $(function() {
   var $createPost = $('#create-post');
   var $postText = $('#post-text');
@@ -5,8 +7,6 @@ $(function() {
 
   var $postList     = $('.wip-list');
   var $postTemplate = $('#post-template').removeAttr('id').remove();
-
-  var apiUser = null;
 
   $('.wip-buttons').on('click', '.btn', function() {
     var $button = $(this);
@@ -28,14 +28,17 @@ $(function() {
     });
   });
 
-  authEvents.on('login', function(event, user) {
-    // console.log('loggd i', user.email);
-    api.getUser(user.email, function(user) {
-      apiUser = user;
-      console.log('got api user: ', user);
+  var onUpdateProfile = function ( user ) {
+    $('.user-name').text(user.name);
+  };
 
-      $('.user-name').text(user.name);
-    });
+  api.onUpdateProfile('m@b.com', function(user) {
+    apiUser = user;
+    $('.user-name').text(user.name);
+  });
+
+  authEvents.on('login', function(event, user) {
+    api.onUpdateProfile(user.email, onUpdateProfile);
   });
 
   api.onPost(function(post) {
@@ -53,6 +56,12 @@ $(function() {
     $post.find('.wip-tags').html(tagHtml);
 
     $post.show();
+  });
+
+  $('#profileModal').on('shown', function() {
+    $('#nameInp').val(apiUser.name);
+    $('#orgInp').val(apiUser.org);
+    console.log('load profile for user ', apiUser.email);
   });
 
 });

@@ -1,4 +1,4 @@
-<?require_once('./inc/head.php');?>
+<? require_once('./inc/head.php');?>
 <?
 	@$page = $_GET['p'];
 	// security?
@@ -13,4 +13,4 @@
 		require_once('./page/error.php');
 	}
 ?>
-<?require_once('./inc/app_foot.php');?>
+<? require_once('./inc/app_foot.php');?>

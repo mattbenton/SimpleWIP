@@ -14,23 +14,23 @@
 	  <div class="control-group">
 		<label class="control-label" for="nameInp">Name</label>
 		<div class="controls">
-		  <input type="email" id="nameInp" placeholder="... your identity" required>
+		  <input type="text" id="nameInp" placeholder="... your identity" required>
 		</div>
 	  </div>
 	  
-	  <div class="control-group">
+	  <!-- <div class="control-group">
 		<label class="control-label" for="titleInp">Title</label>
 		<div class="controls">
-		  <input type="email" id="titleInp" placeholder="... your job">
+		  <input type="text" id="titleInp" placeholder="... your job">
 		</div>
 	  </div>
 	  
-	  <hr />
+	  <hr /> -->
 	  
 	  <div class="control-group">
 		<label class="control-label" for="orgInp">Organisation</label>
 		<div class="controls">
-		  <input type="email" id="orgInp" placeholder="... your identity" required>
+		  <input type="text" id="orgInp" placeholder="... your identity" required>
 		</div>
 	  </div>
 	  
@@ -46,15 +46,17 @@
 ================================================== -->
 
 <script>
-	$().ready(function(){
-	
-		$('#profileModal input').on('keydown', function(e){
+	$(function(){
+
+		var $modal = $('#profileModal');
+
+		$modal.find('input').on('keydown', function(e){
 			if (e.keyCode == 13){
 				$('#profile-save').trigger('click');
 			}
 		});
 		
-		$('#profileModal').on('shown', function() {
+		$modal.on('shown', function() {
 			$("#nameInp").focus();
 		});
 		
@@ -65,8 +67,15 @@
 			var title = $('#titleInp').val();
 			var org = $('#orgInp').val();
 			
-			if (name && title && org){
-				$('#profileModal').loaderlay({message: 'Saving ...'});
+			if (name && org){
+				// $modal.loaderlay({message: 'Saving ...'});
+				api.setUser(apiUser.email, {
+					name: name,
+					org:  org
+				}, function() {
+					console.log('saved');
+					$modal.modal('hide');
+				});
 			}
 		});
 	
