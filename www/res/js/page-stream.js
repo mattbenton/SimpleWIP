@@ -32,14 +32,10 @@ $(function() {
   });
 
   var onUpdateProfile = function ( user ) {
-    $('.user-name').text(user.name);
-  };
-
-  api.onUpdateProfile('m@b.com', function(user) {
     apiUser = user;
     console.log('got profile', user);
     $('.user-name').text(user.name);
-  });
+  };
 
   authEvents.on('login', function(event, user) {
     api.onUpdateProfile(user.email, onUpdateProfile);
@@ -52,6 +48,8 @@ $(function() {
     $post.find('.wip-time').text(timeSince(post.timestamp));
 
     post.tags = post.tags || [];
+
+    console.log(post);
 
     $post.toggleClass('wip-help', post.help || false);
 
