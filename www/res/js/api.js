@@ -54,30 +54,39 @@ $(function() {
       return error('signUp', 'missing callback');
     }
 
-    var savedUser = false;
-    var savedOrg  = false;
+    var createUser = function ( org ) {
+      var orgId = org && org.id || options.orgId;
 
-    var onSave = function () {
-      if ( savedUser && savedOrg ) {
-        callback();
-      }
+      var actionCount = 0;
+      var onSave = function () {
+        actionCount++;
+        if ( actionCount === 2 ) {
+          callback();
+        }
+      };
+
+      api.setUser(options.userEmail, {
+        name:  options.userName,
+        email: options.userEmail,
+        org:   options.orgName,
+        orgId: orgId
+      }, onSave);
+
+      api.addUserToOrg({
+        email: options.userEmail,
+        orgId:     orgId
+      }, onSave);
     };
 
-    api.setUser(options.userEmail, {
-      name:  options.userName,
-      email: options.userEmail,
-      org:   options.orgName
-    }, function() {
-      savedUser = true;
-      onSave();
-    });
-
-    api.setTeam(options.orgName, {
-      name: options.orgName
-    }, function() {
-      savedOrg = true;
-      onSave();
-    });
+    if ( !options.orgId ) {
+      api.createOrg({
+        name: options.orgName
+      }, function(org) {
+        createUser(org);
+      });
+    } else {
+      createUser();
+    }
   };
 
   api.setUser = function ( email, data, callback ) {
@@ -90,19 +99,31 @@ $(function() {
   };
 
   api.getUser = function ( email, callback ) {
-    if ( userCache[email] ) {
-      return userCache[email];
-    }
+    // if ( userCache[email] ) {
+    //   console.log('exit earky');
+    //   return userCache[email];
+    // }
+
+    api.querySingle('user/' + encodeKey(email), callback);
+    return;
+
+    console.log('getUser');
+
+    F.child('orgUsers').on('child_added', function(orgItem) {
+      var org = orgItem.val();
+      console.log(org);
+    });
 
     F.child('user/' + encodeKey(email)).once('value', function(item) {
       var user = item.val();
+      console.log('got user');
       userCache[email] = user;
-      callback(user);
+      // callback(user);
     });
   };
 
   api.createOrg = function ( data, callback ) {
-    if ( !hasRequired('createOrganisation', data, 'name') ) {
+    if ( !hasRequired('createOrg', data, 'name') ) {
       return;
     }
 
@@ -155,17 +176,23 @@ $(function() {
     var ref = F.child('orgUsers/' + encodeKey(options.orgId) + '/' + encodeKey(options.email));
     ref.set(true, callback);
 
+    F.child('user/' + encodeKey(options.email)).update({
+      orgId: options.orgId
+    });
+
     // api.setUser({
     //   orgId: options.orgId
     // }, function)
   };
 
+  api.addUserToOrg({ email: 'tarwin@gmail.com', orgId: '-IonVblzI_JDb5bVx8-b' });
+
   api.onOrgUsers = function ( orgId, callback ) {
     F.child('orgUsers/' + orgId).on('child_added', function(item) {
-      api.getUser(item.val().email, function(user) {
-        user.orgId = orgId;
-        callback(user);
-      });
+      // api.getUser(item.val().email, function(user) {
+      //   user.orgId = orgId;
+      //   callback(user);
+      // });
     });
   };
 
@@ -245,14 +272,12 @@ $(function() {
   api.onPost = function ( callback ) {
     F.child('posts').on('child_added', function(item) {
       var post = item.val();
+      // callback(post);
 
-      var user = userCache[post.email];
-      if ( user ) {
-        post.user = user;
-        return callback(post);
-      }
+      // console.log(post.email);
 
       api.getUser(post.email, function(user) {
+        // console.log(user);
         if ( user ) {
           post.user = user;
           callback(post);
@@ -288,7 +313,42 @@ $(function() {
     });
   };
 
+  var queryCache = {};
+
+  api.querySingle = function ( key, callback ) {
+    var query = queryCache[key];
+    if ( query ) {
+      // console.log('adding listener for key', key);
+      query.listeners.push(callback);
+    } else {
+      query = {
+        key: key,
+        listeners: [callback]
+      };
+
+      // console.log('create query: ', key);
+
+      queryCache[key] = query;
+
+      F.child(key).once('value', function(item) {
+        for ( var i = 0; i < query.listeners.length; i++ ) {
+          var listener = query.listeners[i];
+          if ( listener ) {
+            listener(item.val());
+          }
+        }
+        delete queryCache[key];
+      });
+    }
+  };
+
 }());
+
+
+// query all posts
+  // get post
+  // get user
+
 
 function timeSince ( ts ) {
   var now  = Date.now();
