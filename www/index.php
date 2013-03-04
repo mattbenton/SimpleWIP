@@ -246,13 +246,21 @@
 						});
 						authEvents.on('login', function(e, user){
 							// creat user and
-							
+              console.log('create user with email: ', email);
+              api.setUser(email, {
+                name: name,
+                email: email
+              }, function() {
+                console.log('created user!');
+                window.location.href = './app.php?p=stream';
+              });
+
 							// create org
 							
 							// link user to org
 
 							// redirect to app
-							window.location.href = './app.php?p=stream';
+							// window.location.href = './app.php?p=stream';
 						});
 						
 						authClient.login('password', {

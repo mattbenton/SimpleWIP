@@ -13,10 +13,11 @@
 	<script src="./res/js/loaderlay.js"></script>
 	<script src="./res/js/event.js"></script>
   <script src="./res/chosen/chosen.jquery.min.js"></script>
-	
+
 	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
 	<script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-auth-client.js"></script>
-		
+  <script src="./res/js/api.js"></script>
+
     <!-- Le styles -->
     <link href="./res/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="./res/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
