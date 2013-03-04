@@ -1,4 +1,5 @@
 $(function() {
+  var $createPost = $('#create-post');
   var $postText = $('#post-text');
   var $postTags = $('#post-tags');
 
@@ -36,7 +37,7 @@ $(function() {
   });
 
   api.onPost(function(post) {
-    var $post = $postTemplate.clone().prependTo($postList);
+    var $post = $postTemplate.clone().insertAfter($createPost);
     $post.find('.wip-name').text(post.user.name);
     $post.find('.wip-message').text(post.message);
 

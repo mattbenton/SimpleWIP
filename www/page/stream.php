@@ -11,7 +11,7 @@
   <div class="span8">
     <ul class="wip-list unstyled">
 
-      <li class="wip post">
+      <li id="create-post" class="wip post">
         <div class="wip-text clearfix">
           <div class="wip-avatar">
             <img src="http://placekitten.com/35/35" />
