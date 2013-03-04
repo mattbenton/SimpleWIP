@@ -61,6 +61,12 @@ $(function() {
     $post.show();
   });
 
+  $postTags.find('option').remove().trigger('liszt:updated');
+  api.onTag(function(tag) {
+    console.log(tag);
+    $postTags.append('<option value="' + tag.name + '">' + tag.name + '</option>').trigger('liszt:updated');
+  });
+
   $('#profileModal').on('shown', function() {
     $('#nameInp').val(apiUser.name);
     $('#orgInp').val(apiUser.org);

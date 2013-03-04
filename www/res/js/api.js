@@ -134,10 +134,6 @@ $(function() {
     });
   };
 
-  api.onTag(function(tag) {
-    console.log('tag', tag);
-  });
-
   api.addUserToOrg = function ( options, callback ) {
     if ( !hasRequired('addUserToOrg', options, 'email, orgId') ) {
       return;
