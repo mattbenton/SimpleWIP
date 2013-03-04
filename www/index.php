@@ -1,5 +1,4 @@
 <? require_once('./inc/head.php'); ?>
-<link href="./res/css/home.css" rel="stylesheet">
 </head><body>
 
     <!-- NAVBAR

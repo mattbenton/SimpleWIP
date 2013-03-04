@@ -44,8 +44,12 @@
           <div class="wip-message">Trying to get our backend CRM to connect and load info about our eComm users.</div>
         </div>
         <div class="wip-meta">
-          <span class="wip-tags"></span>
-          <button class="btn btn-mini" type="button">I can help</button>
+          <ul class="wip-tags unstyled">
+            <span class="label label-info">javascript<span class="wip-follow-tooltip">&#10003;</span></span>
+            <span class="label label-info">php<span class="wip-follow-tooltip">&#10003;</span></span>
+            <span class="label label-info">backbone.js<span class="wip-follow-tooltip">&#10003;</span></span>
+          </ul>
+            <button class="btn btn-mini" type="button">I can help</button>
           <!-- <div class="wip-comment">
             <div class="wip-avatar">
               <img src="http://placekitten.com/25/25" />
@@ -59,7 +63,19 @@
     </ul>
   </div>
   <div class="span4">
-    sidebar
+
+    <div class="sidebar">
+
+      <div class="user-profile">
+        <div class="wip-avatar">
+          <img src="http://placekitten.com/75/75" />
+        </div>
+        <h5>Jack Johnson</h5>
+        <p>iPhone developer</p>
+      </div>
+
+    </div>
+
   </div>
 </div>
 

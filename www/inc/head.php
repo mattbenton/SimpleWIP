@@ -27,6 +27,8 @@
 	<link href="./res/css/base.css" rel="stylesheet">
   <link href="./res/chosen/chosen.css" rel="stylesheet">
   <link href="./res/css/global.css" rel="stylesheet">
+  <link href="./res/css/home.css" rel="stylesheet">
+
 
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,900,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900,400italic,900italic' rel='stylesheet' type='text/css'>
@@ -51,6 +53,9 @@
 		$().ready(function(){
 			$.addEventModel(authEvents);
       $(".chzn-select").chosen()
+      $(".wip-follow-tooltip").tooltip({
+        title: 'Follow tag'
+      })
 
 		});
 	</script>

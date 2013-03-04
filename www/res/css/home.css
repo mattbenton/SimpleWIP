@@ -31,6 +31,7 @@
 
     /* Remove border and change up box shadow for more contrast */
     .navbar .navbar-inner {
+      padding-right: 0;
       border: 0;
       -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
          -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
@@ -60,7 +61,35 @@
       margin-top: 10px;
     }
 
+    .navbar ul {
+      margin: 0;
+      margin-left: 20px;
+      float: left;
+      border-left: 1px solid #515255;
+      overflow: hidden;
+    }
+    .navbar li {
+      float: left;
+      border-right: 1px solid #515255;
+    }
+    .navbar li a {
+      line-height: 50px;
+      padding: 0 10px;
+      color: #999;
+      height: 50px;
+      display: block;
+    }
+    .navbar a:hover, .navbar li.active a {
+      text-decoration: none;
+      color: #ccc;
+    }
 
+    .navbar ul.logout {
+      float: right;
+    }
+    .navbar ul.logout li {
+      border: 0;
+    }
 
     /* CUSTOMIZE THE CAROUSEL
     -------------------------------------------------- */
