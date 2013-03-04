@@ -137,17 +137,9 @@
 	  </script>
 
       <ul class="team-list unstyled">
-        <li class="clearfix">
-          <div class="wip-avatar pull-left"><img src="http://placekitten.com/20/20" /></div>
-          <a href="">Matt Benton</a>
-        </li>
-        <li class="clearfix">
-          <div class="wip-avatar pull-left"><img src="http://placekitten.com/20/20" /></div>
-          <a href="">Tarwin</a>
-        </li>
-        <li class="clearfix">
-          <div class="wip-avatar pull-left"><img src="http://placekitten.com/20/20" /></div>
-          <a href="">Bob</a>
+        <li id="team-memember-template" class="clearfix">
+          <div class="wip-avatar pull-left"><img src="" width="20" height="20" /></div>
+          <a class="user-name" href="">Matt Benton</a>
         </li>
       </ul>
 

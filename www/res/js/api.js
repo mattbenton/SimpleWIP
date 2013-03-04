@@ -189,10 +189,13 @@ $(function() {
 
   api.onOrgUsers = function ( orgId, callback ) {
     F.child('orgUsers/' + orgId).on('child_added', function(item) {
-      // api.getUser(item.val().email, function(user) {
-      //   user.orgId = orgId;
-      //   callback(user);
-      // });
+      var email = decodeKey(item.name());
+      api.getUser(email, function(user) {
+        if ( user ) {
+          user.orgId = orgId;
+          callback(user);
+        }
+      });
     });
   };
 

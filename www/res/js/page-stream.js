@@ -35,12 +35,31 @@ $(function() {
 
   });
 
+  var isFirstProfileUpdate = true;
+
+  var $teamMemberList       = $('.team-list');
+  var $teamMememberTemplate = $('#team-memember-template').remove().removeAttr('id').clone();
+
   var onUpdateProfile = function ( user ) {
     apiUser = user;
     console.log('got profile', user);
+
     $('.user-name').text(user.name);
     $('.user-title').text(user.title);
     $('.user-avatar').attr('src', '//gravatar.com/avatar/' + md5(user.email));
+
+    if ( isFirstProfileUpdate ) {
+      api.onOrgUsers(apiUser.orgId, function(user) {
+        var $user = $teamMememberTemplate.clone();
+
+        $user.find('.user-name').text(user.name);
+        $user.find('.wip-avatar img').attr('src', '//gravatar.com/avatar/' + md5(user.email));
+
+        $user.appendTo($teamMemberList).show();
+      });
+    }
+
+    isFirstProfileUpdate = false;
   };
 
   authEvents.on('login', function(event, user) {
