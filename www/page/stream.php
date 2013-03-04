@@ -97,10 +97,8 @@
         <input class="appendedInputButton" id="invite-email" type="email" placeholder="email address" required />
         <button class="btn" type="button" id="invite-btn">Invite!</button>
       </div>
-	  <div id="invite-link-info" class="alert alert-success" style="display: none;">Please email this link.</div>
 	  <div id="invite-link-error" class="alert alert-warning" style="display: none;">Sorry, this user is already in the system.</div>
-	  <div id="invite-link" style="display: none;"></div>
-
+	  
 	  <script>
 		$(function(){
 			$('#invite-email').on('keydown', function(e){
@@ -110,8 +108,6 @@
 			});
 			$('#invite-btn').click(function(e){
 			
-				$('#invite-link').hide();
-				$('#invite-link-info').hide();
 				$('#invite-link-error').hide();
 				
 				var $e = $('#invite-email');
@@ -122,11 +118,11 @@
 					}
 					api.getUser(email, function(user){
 						if (!user){
-							$e.val('');
+							$e.val('');							
 							var $in = $('#invite-link');
 							$in.html('http://simplewip.com/?join&org=' + apiUser.orgId + '&email=' + encodeURIComponent(email));
-							$in.show();
-							$('#invite-link-info').show();
+							$('#invite-link-email').html(email);
+							$('#inviteModal').modal('show');
 						}else{
 							$('#invite-link-error').show();
 						}
@@ -150,3 +146,4 @@
 
 <script src="/res/js/page-stream.js"></script>
 <? require_once('./page/inc/stream_profile.php'); ?>
+<? require_once('./page/inc/stream_invite.php'); ?>
