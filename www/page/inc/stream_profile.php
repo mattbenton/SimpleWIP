@@ -71,8 +71,9 @@
 			if (name && org){
 				// $modal.loaderlay({message: 'Saving ...'});
 				api.setUser(apiUser.email, {
-					name: name,
-					org:  org
+					name:  name,
+					org:   org,
+					title: title
 				}, function() {
 					console.log('saved');
 					$modal.modal('hide');
