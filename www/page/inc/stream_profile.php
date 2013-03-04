@@ -72,7 +72,7 @@
 				// $modal.loaderlay({message: 'Saving ...'});
 				api.setUser(apiUser.email, {
 					name:  name,
-					org:   org,
+					/*org:   org,*/
 					title: title
 				}, function() {
 					console.log('saved');
