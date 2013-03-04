@@ -13,5 +13,12 @@
 </script>
 
 </div><!--//container-->
+
+  <!-- FOOTER -->
+  <footer style="padding: 30px;">
+	<p class="pull-right"><a href="#">Back to top</a></p>
+	<p>&copy; 2013 SimpleWIP, Inc. &middot; <a href="mailto:contact@simplewip.com">Contact</a> &middot; <a href="https://twitter.com/simplewip">Twitter</a></p>
+  </footer>
+
   </body>
 </html>
