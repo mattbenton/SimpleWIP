@@ -39,6 +39,7 @@ $(function() {
     apiUser = user;
     console.log('got profile', user);
     $('.user-name').text(user.name);
+    $('.user-avatar').attr('src', '//gravatar.com/avatar/' + md5(user.email));
   };
 
   authEvents.on('login', function(event, user) {
@@ -52,8 +53,6 @@ $(function() {
     $post.find('.wip-time').text(timeSince(post.timestamp));
 
     post.tags = post.tags || [];
-
-    console.log(post);
 
     $post.toggleClass('wip-help', post.help || false);
 

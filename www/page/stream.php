@@ -76,7 +76,7 @@
 
       <div class="user-profile">
         <div class="wip-avatar">
-          <img src="http://placekitten.com/75/75" />
+          <img class="user-avatar" src="http://placekitten.com/75/75" />
         </div>
         <h5 class="user-name"></h5>
         <p>iPhone developer</p>
