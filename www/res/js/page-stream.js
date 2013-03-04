@@ -29,6 +29,10 @@ $(function() {
     };
 
     api.createPost(apiUser, post);
+
+    $postText.val('')
+    $postTags.val('').trigger('liszt:updated');
+
   });
 
   var onUpdateProfile = function ( user ) {
@@ -64,7 +68,7 @@ $(function() {
     $post.show();
   });
 
-  $postTags.find('option').remove().trigger('liszt:updated');
+  // $postTags.find('option').remove().trigger('liszt:updated');
   api.onTag(function(tag) {
     $postTags.append('<option value="' + tag.name + '">' + tag.name + '</option>').trigger('liszt:updated');
   });

@@ -21,11 +21,6 @@
           <div>
 
             <select id="post-tags" data-placeholder="Tags" class="chzn-select input-block-level" multiple>
-              <option value=""></option> 
-              <option value="php">php</option> 
-              <option value="javascript">javascript</option> 
-              <option value="backbone">backbone</option> 
-              <option value="jquery">jquery</option> 
             </select>
 
           </div>
@@ -83,7 +78,7 @@
         <div class="wip-avatar">
           <img src="http://placekitten.com/75/75" />
         </div>
-        <h5 class="user-name">Jack Johnson</h5>
+        <h5 class="user-name"></h5>
         <p>iPhone developer</p>
 		    <div class="btn btn-small"><a id="profile-edit-btn" href="#profileModal" data-toggle="modal"><i class="icon-edit"></i> Edit</a></div>
       </div>
