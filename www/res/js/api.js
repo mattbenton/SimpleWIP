@@ -90,7 +90,7 @@ $(function() {
   };
 
   api.setUser = function ( email, data, callback ) {
-    var ref = F.child('user/' + encodeKey(email));
+    var ref = F.child('users/' + encodeKey(email));
     ref.update(data, function() {
       if ( callback ) {
         callback();
@@ -104,7 +104,7 @@ $(function() {
     //   return userCache[email];
     // }
 
-    api.querySingle('user/' + encodeKey(email), callback);
+    api.querySingle('users/' + encodeKey(email), callback);
     return;
 
     console.log('getUser');
@@ -114,7 +114,7 @@ $(function() {
       console.log(org);
     });
 
-    F.child('user/' + encodeKey(email)).once('value', function(item) {
+    F.child('users/' + encodeKey(email)).once('value', function(item) {
       var user = item.val();
       console.log('got user');
       userCache[email] = user;
@@ -176,7 +176,7 @@ $(function() {
     var ref = F.child('orgUsers/' + encodeKey(options.orgId) + '/' + encodeKey(options.email));
     ref.set(true, callback);
 
-    F.child('user/' + encodeKey(options.email)).update({
+    F.child('users/' + encodeKey(options.email)).update({
       orgId: options.orgId
     });
 
@@ -184,8 +184,6 @@ $(function() {
     //   orgId: options.orgId
     // }, function)
   };
-
-  api.addUserToOrg({ email: 'tarwin@gmail.com', orgId: '-IonVblzI_JDb5bVx8-b' });
 
   api.onOrgUsers = function ( orgId, callback ) {
     F.child('orgUsers/' + orgId).on('child_added', function(item) {
@@ -209,7 +207,7 @@ $(function() {
   };
 
   api.getTeam = function ( name, callback ) {
-    F.child('user/' + encodeKey(name)).once('value', function(item) {
+    F.child('users/' + encodeKey(name)).once('value', function(item) {
       callback(item.val());
     });
   };
@@ -220,7 +218,7 @@ $(function() {
   };
 
   api.onUpdateProfile = function ( email, callback ) {
-    F.child('user/' + encodeKey(email)).on('value', function(item) {
+    F.child('users/' + encodeKey(email)).on('value', function(item) {
       if ( callback ) {
         callback(item.val());
       }
@@ -290,7 +288,7 @@ $(function() {
   };
 
   api.getPostsByUser = function ( email, callback ) {
-    F.child('user/' + encodeKey(email) + '/posts').on('child_added', function(item) {
+    F.child('users/' + encodeKey(email) + '/posts').on('child_added', function(item) {
       if ( callback ) {
         callback(item.val());
       }
