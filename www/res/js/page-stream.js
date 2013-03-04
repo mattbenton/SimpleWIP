@@ -36,7 +36,7 @@ $(function() {
   });
 
   api.onPost(function(post) {
-    var $post = $postTemplate.clone().appendTo($postList);
+    var $post = $postTemplate.clone().prependTo($postList);
     $post.find('.wip-name').text(post.user.name);
     $post.find('.wip-message').text(post.message);
 
@@ -44,7 +44,7 @@ $(function() {
     var tags = post.tags;
     var tagHtml = '';
     for ( var i = 0; i < tags.length; i++ ) {
-      tagHtml += '<a href="#' + tags[i] + '">#' + tags[i] + '</a>';
+      tagHtml += '<a href="#' + tags[i] + '">#' + tags[i] + '</a> ';
     }
     $post.find('.wip-tags').html(tagHtml);
 
