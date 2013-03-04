@@ -10,7 +10,7 @@ body {
 }
 
 .wip-list {
-  width: 550px;
+  /*width: 550px;*/
   position: relative;
   padding-left: 80px;
   margin: 0;
@@ -89,6 +89,7 @@ body {
   /*z-index: 2;*/
   padding: 10px;
   padding-left: 60px;
+  padding-right: 35px;
   min-height: 40px;
 }
 
@@ -97,10 +98,12 @@ body {
 }
 
 .wip-tags {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 2;
+  /*position: absolute;*/
+  /*top: 10px;*/
+  /*right: 10px;*/
+  /*z-index: 2;*/
+  padding: 0 0 8px 0;
+  overflow: hidden;
 }
 
 .wip-tags .tag {
@@ -113,7 +116,7 @@ body {
   padding: 0 3px;
   background: #e0e2e4;
   border-radius: 3px;
-  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .wip-tags .label span {
@@ -139,12 +142,14 @@ body {
   top: 10px;
 }
 
+/*.span8, .span4 {border: 1px solid red;}*/
+
 .wip-meta {
   background: #f0f2f4;
   border-radius: 3px;
   -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
   padding: 8px 0 0 0;
-  padding: 14px 10px 0 10px;
+  padding: 14px 10px 1px 10px;
   margin: -5px 10px 0 60px;
 }
 
@@ -161,11 +166,24 @@ body {
 }
 
 .wip-comment input {
-  width: 353px;
-  height: 16px;
+  /*width: 353px;*/
+  min-height: 0;
+  height: 26px;
   font-size: 13px;
   line-height: 16px;
-  opacity: .6;
+  opacity: .4;
+}
+
+.wip-comment .input-append {
+  /*border: 1px solid red;*/
+  position: relative;
+  display: block;
+  margin-right: 95px;
+}
+
+.wip-comment .input-append button {
+  left: 100%;
+  position: absolute;
 }
 
 .wip-comment input:focus {
@@ -173,7 +191,7 @@ body {
 }
 
 .wip-comment .btn {
-  opacity: .6;
+  opacity: .3;
 }
 
 .wip-comment .btn:hover, .wip-comment input:focus+button {
@@ -183,6 +201,7 @@ body {
 /* sidebar */
 .sidebar {
   padding-top: 30px;
+  padding-left: 50px;
 }
 
 .user-profile {
@@ -199,6 +218,12 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+}
+
+.org-invite {
+  position: relative;
+  margin-right: 85px;
+  display: block;
 }
 
 /* team list */

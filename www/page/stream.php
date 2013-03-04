@@ -35,10 +35,6 @@
 
         <div class="wip-ribbon"></div>
 
-        <ul class="wip-tags unstyled">
-          <span class="tag">javascript</span>
-        </ul>
-
         <div class="wip-text">
           <div class="wip-avatar">
             <img src="http://placekitten.com/35/35" />
@@ -56,12 +52,17 @@
               <span class="wip-name">Andy J.</span> Ping me if you need api documentation it’s kind of a mess right now
             </div>
           </div>-->
+          <ul class="wip-tags unstyled">
+          </ul>
+
           <div class="wip-comment">
             <div class="input-append">
-              <input id="appendedInputButton" type="text" placeholder="Type comment..." />
+              <input id="appendedInputButton" class="input-block-level" type="text" placeholder="Type comment..." />
               <button class="btn btn-small" type="button"><i class="icon-reply"></i> Comment!</button>
             </div>
           </div>
+
+
         </div>
         <div class="wip-time">2 hours ago</div>
       </li>
@@ -92,8 +93,8 @@
 
       <h5>Organization:</h5>
 
-      <div class="input-append">
-        <input id="appendedInputButton" type="text" placeholder="email address" />
+      <div class="input-append org-invite">
+        <input id="appendedInputButton" class="input-block-level" type="text" placeholder="email address" />
         <button class="btn" type="button">Invite!</button>
 		<div id="">http://simplewip.com/?join&org=abc&email=tarwin@gmail.com</div>
       </div>
