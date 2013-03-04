@@ -25,14 +25,14 @@
 				</div>
 		  </div>
 
-		  <hr />
+		  <!-- <hr />
 
 		  <div class="control-group">
 				<label class="control-label" for="orgInp">Organisation</label>
 				<div class="controls">
 				  <input type="text" id="orgInp" placeholder="... your identity" required>
 				</div>
-		  </div>
+		  </div> -->
 		  
 		</form>
   </div>
@@ -66,9 +66,9 @@
 			
 			var name = $('#nameInp').val();
 			var title = $('#titleInp').val();
-			var org = $('#orgInp').val();
+			// var org = $('#orgInp').val();
 			
-			if (name && org){
+			if (name && title){
 				// $modal.loaderlay({message: 'Saving ...'});
 				api.setUser(apiUser.email, {
 					name:  name,

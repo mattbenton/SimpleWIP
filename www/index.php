@@ -16,6 +16,11 @@
               <span class="icon-bar"></span>
             </button>
             <a class="brand" href="#">Simple<span>WIP</span></a>
+
+		      <ul class="unstyled logout">
+		        <li><a href="#loginModal" id="logout" data-toggle="modal">Login</a></li>
+		      </ul>
+
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
 
@@ -32,7 +37,7 @@
             <div class="carousel-caption">
               <h1><span class="simple">Simple</span><span class="wip">WIP</span> for those with no time.</h1>
               <p class="lead">Invite your workers to join SimpleWIP and you’re on your way to social business insights and less wasted time.</p>
-              <a class="btn btn-large btn-primary" href="#signupModal" id="signup" data-toggle="modal">Sign up today</a>
+              <a class="btn btn-large btn-primary" href="#signupModal" id="signup" data-toggle="modal" style="margin-right: 7px">Sign up today</a>
 			  <a class="btn btn-large btn-success" href="#loginModal" id="login" data-toggle="modal">Log in</a>
             </div>
           </div>

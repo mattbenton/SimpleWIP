@@ -72,6 +72,8 @@ $(function() {
     $post.find('.wip-message').text(post.message);
     $post.find('.wip-time').text(timeSince(post.timestamp));
 
+    $post.find('.avatar').attr('src', '//gravatar.com/avatar/' + md5(post.user.email));
+
     post.tags = post.tags || [];
 
     $post.toggleClass('wip-help', post.help || false);
@@ -98,5 +100,17 @@ $(function() {
     $('#titleInp').val(apiUser.title);
     console.log('load profile for user ', apiUser.email);
   });
+
+  $('.wip-list').on('keydown', '.wip-comment-input', function(e){
+    if(e.keyCode == 13) {
+      var val = $(this).val();
+      var tmpl = '<div class="wip-comment"><div class="wip-avatar"><img width="25" height="25" src="' + '//gravatar.com/avatar/' + md5(apiUser.email) + '" /></div><span class="wip-name">' + apiUser.name + '</span> ' + val + '</div>';
+      var wipComments = $(this).parents('.wip-comment').prev();
+      wipComments.append(tmpl);
+      $(this).val('').blur();
+      return false;
+    }
+    // if(e.)
+  })
 
 });

@@ -15,7 +15,7 @@
       <li id="create-post" class="wip post">
         <div class="wip-text clearfix">
           <div class="wip-avatar">
-            <img src="http://placekitten.com/35/35" />
+            <img class="user-avatar" src="" width="35" height="35" />
           </div>
           <textarea id="post-text" class="input-block-level" placeholder="What are you working on today?"></textarea>
           <div>
@@ -37,7 +37,7 @@
 
         <div class="wip-text">
           <div class="wip-avatar">
-            <img src="http://placekitten.com/35/35" />
+            <img src="" class="avatar" width="35" height="35" />
           </div>
           <span class="wip-name">Jeremy W. </span>
           <span class="wip-message">Trying to get our backend CRM to connect and load info about our eComm users.</span>
@@ -55,19 +55,57 @@
           <ul class="wip-tags unstyled">
           </ul>
 
+          <div class="wip-comment-list"></div>
+
           <div class="wip-comment">
             <div class="input-append">
-              <input id="appendedInputButton" class="input-block-level" type="text" placeholder="Type comment..." />
+              <input id="appendedInputButton" class="input-block-level wip-comment-input" type="text" placeholder="Type comment..." />
               <button class="btn btn-small" type="button"><i class="icon-reply"></i> Comment!</button>
             </div>
           </div>
 
 
         </div>
-        <div class="wip-time">2 hours ago</div>
+        <div class="wip-time"></div>
       </li>
 
       <h3 class="wip-date-div">Yesterday</h3>
+
+      <li class="wip">
+
+        <div class="wip-ribbon"></div>
+
+        <div class="wip-text">
+          <div class="wip-avatar">
+            <img src="http://placekitten.com/35/35" />
+          </div>
+          <span class="wip-name">Jeremy W. </span>
+          <span class="wip-message">Trying to get our backend CRM to connect and load info about our eComm users.</span>
+        </div>
+        <div class="wip-meta">
+          <ul class="wip-tags unstyled">
+          </ul>
+
+          <div class="wip-comment-list">
+            <div class="wip-comment">
+              <div class="wip-avatar">
+                <img src="http://placekitten.com/25/25" />
+              </div>
+              <span class="wip-name">Andy J.</span> Ping me if you need api documentation it’s kind of a mess right now
+            </div>
+          </div>
+
+          <div class="wip-comment">
+            <div class="input-append">
+              <input id="appendedInputButton" class="input-block-level wip-comment-input" type="text" placeholder="Type comment..." />
+              <button class="btn btn-small" type="button"><i class="icon-reply"></i> Comment!</button>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="wip-time">1 day ago</div>
+      </li>
 
     </ul>
   </div>
@@ -77,7 +115,7 @@
 
       <div class="user-profile">
         <div class="wip-avatar">
-          <img class="user-avatar" src="http://placekitten.com/75/75" />
+          <img class="user-avatar" src="" width="75" height="75" />
         </div>
         <h5 class="user-name"></h5>
         <p class="user-title"></p>
@@ -87,14 +125,14 @@
       <h5>Following:</h5>
       <span class="label">backbone.js</span>
       <span class="label">coffeescript</span>
-      <span class="label">donkies</span>
+      <span class="label">donkeys</span>
 
       <br /><br />
 
       <h5>Organization:</h5>
 
-      <div class="input-append">
-        <input class="appendedInputButton" id="invite-email" type="email" placeholder="email address" required />
+      <div class="input-append org-invite">
+        <input class="appendedInputButton input-block-level" id="invite-email" type="email" placeholder="email address" required />
         <button class="btn" type="button" id="invite-btn">Invite!</button>
       </div>
 	  <div id="invite-link-error" class="alert alert-warning" style="display: none;">Sorry, this user is already in the system.</div>

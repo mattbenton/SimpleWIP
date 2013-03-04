@@ -117,6 +117,11 @@ body {
   background: #e0e2e4;
   border-radius: 3px;
   margin-right: 8px;
+  cursor: pointer;
+}
+
+.wip-tags .tag:hover {
+  background: #d4d6d8;
 }
 
 .wip-tags .label span {
@@ -134,7 +139,12 @@ body {
 }
 
 .label {
+  cursor: pointer;
   font-weight: normal;
+}
+
+.label:hover {
+  background: #a4a4a4;
 }
 
 .wip-text .wip-avatar {
@@ -156,6 +166,21 @@ body {
 .wip-comment-list {
   /*text-align: center;*/
   /*padding: 0 0 10px 0;*/
+}
+
+.wip-comment-list .wip-comment:first-child {
+  border-top: 1px solid #e2e3e4;
+  padding-top: 10px;
+}
+
+.wip-comment-list .wip-comment:first-child .wip-avatar {
+  top: 10px;
+}
+
+.wip-comment-list .wip-comment {
+  padding-left: 35px;
+  min-height: 35px;
+  padding-bottom: 10px;
 }
 
 .wip-comment {

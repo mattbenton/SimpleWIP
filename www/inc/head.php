@@ -59,8 +59,7 @@
       $(".chzn-select").chosen({
         create_option: true,
         create_option_text: 'Create tag',
-        persistent_create_option: true,
-        limit: 2
+        persistent_create_option: true
       })
       $(".wip-follow-tooltip").tooltip({
         title: 'Follow tag'
