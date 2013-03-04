@@ -128,6 +128,12 @@ $(function() {
     F.child('orgs/' + id).update(data, callback);
   };
 
+  api.getOrg = function ( orgId, callback ) {
+    F.child('orgs/' + id).once('value', function(item) {
+      callback(item.val());
+    });
+  };
+
   api.onTag = function ( callback ) {
     F.child('tags').on('child_added', function(item) {
       callback(item.val());
