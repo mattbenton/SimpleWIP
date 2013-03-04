@@ -47,6 +47,8 @@ $(function() {
     $post.find('.wip-message').text(post.message);
     $post.find('.wip-time').text(timeSince(post.timestamp));
 
+    post.tags = post.tags || [];
+
     // var tags = ['jQuery'];
     var tags = post.tags;
     var tagHtml = '';
