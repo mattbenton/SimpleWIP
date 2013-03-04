@@ -133,6 +133,8 @@
 			</div>
 		  </div>
 		  
+		  <input type="hidden" id="orgIdInp" name="orgIdInp" value="">
+		  
 		</form>
 	  </div>
 	  <div class="modal-footer">
@@ -213,6 +215,7 @@
 				api.getOrg('<?=$_GET['org']?>', function(org){
 					if (org){
 						$('#orgInp').val(org.name).prop('disabled', true);
+						$('#orgIdInp').val('<?=$_GET['org']?>');
 					}
 				});
 			<? } ?>
@@ -239,6 +242,7 @@
 				var again = $('#againInp').val();
 				var name = $('#nameInp').val();
 				var org = $('#orgInp').val();
+				var orgId = $('#orgIdInp').val();
 				
 				if (email && pass && again && pass == again && name && org){
 					$('#signupModal').loaderlay({message: 'Working ...'});
@@ -262,13 +266,15 @@
 						});
 						authEvents.on('login', function(e, user){
 							// creat user and
-              api.signUp({
-                userName:  name,
-                userEmail: email,
-                orgName:   org
-              }, function() { 
-                window.location.href = './app.php?p=stream';
-              });
+							api.signUp(
+								{
+									userName:  name,
+									userEmail: email,
+									orgName:   org,
+									orgId:	   orgId
+								}, function() { 
+									window.location.href = './app.php?p=stream';
+							});
 						});
 						
 						authClient.login('password', {
