@@ -1,0 +1,104 @@
+/* stream */
+
+body {
+  background: #e0e1e5;
+}
+
+.wip-list {
+  width: 550px;
+  position: relative;
+  padding-left: 80px;
+  margin: 0;
+  padding-bottom: 40px;
+}
+
+.wip-list:before {
+  content: '';
+  width: 3px;
+  background: #d5d7d9;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100px;
+}
+
+.wip {
+  /*min-height: 100px;*/
+  color: #5a5b5e;
+  margin: 30px 0 30px 0;
+  position: relative;
+
+}
+
+.wip textarea {
+  
+}
+
+.wip textarea {
+  resize: none;
+}
+
+.wip-buttons {
+  float: right;
+  height: 40px;
+  padding-top: 10px;
+}
+
+.wip-time {
+  position: absolute;
+  font-size: 11px;
+  top: 10px;
+  left: -50px;
+  width: 40px;
+  line-height: 15px;
+  text-align: right;
+  color: #909196;
+}
+
+.wip-avatar {
+  border: 2px solid #fff;
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.2);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.wip-avatar img {
+  display: block;
+}
+
+.wip-name {
+  font-weight: bold;
+  color: #003577;
+}
+
+.wip-text {
+  background: #f0f2f4;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  position: relative;
+  /*z-index: 2;*/
+  padding: 10px;
+  padding-left: 60px;
+  min-height: 30px;
+}
+
+.wip-text .wip-avatar {
+  left: 10px;
+  top: 10px;
+}
+
+.wip-meta {
+  background: #f0f2f4;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  padding: 5px 0 0 0;
+  padding: 10px;
+  margin: -5px 10px 0 60px;
+}
+
+.wip-comment {
+  font-size: 13px;
+  min-height: 30px;
+  position: relative;
+  padding: 5px 10px 5px 35px;
+}

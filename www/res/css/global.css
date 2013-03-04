@@ -1,0 +1,11 @@
+.nav {
+  background: -webkit-linear-gradient(top, #e3e2e7, #dddee3);
+  border-bottom: 1px solid #ced1d8;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.app-container {
+   background: #e7e9eb;
+   -webkit-box-shadow: 0 0 4px rgba(0,0,0,.2);
+}

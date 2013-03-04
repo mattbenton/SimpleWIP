@@ -12,6 +12,7 @@
 	<script src="./res/bootstrap/js/bootstrap.js"></script>
 	<script src="./res/js/loaderlay.js"></script>
 	<script src="./res/js/event.js"></script>
+  <script src="./res/chosen/chosen.jquery.min.js"></script>
 	
 	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
 	<script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-auth-client.js"></script>
@@ -19,10 +20,12 @@
     <!-- Le styles -->
     <link href="./res/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="./res/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-		
+
 	<link href="./res/bootstrap/css/font-awesome.css" rel="stylesheet">
 		
 	<link href="./res/css/base.css" rel="stylesheet">
+  <link href="./res/chosen/chosen.css" rel="stylesheet">
+  <link href="./res/css/global.css" rel="stylesheet">
 
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,900,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900,400italic,900italic' rel='stylesheet' type='text/css'>
@@ -46,5 +49,7 @@
 		var authEvents = {};
 		$().ready(function(){
 			$.addEventModel(authEvents);
+      $(".chzn-select").chosen()
+
 		});
 	</script>
